@@ -1,0 +1,79 @@
+[
+  {
+    "matriculationNumber": "2402087G",
+    "name": "Muthiah S/O Nachiappan",
+    "year": "2",
+    "email": "2402090G@student.tp.edu.sg",
+    "phoneNumber": "98933387",
+    "courseID": "T63",
+    "class": "C24BO2",
+    "houseAddress": "\nUnit Number: #23-21, Street Address: 445 HOUGANG AVENUE 8 SINGAPORE 530445",
+    "className": "C24BO2"
+  },
+  {
+    "matriculationNumber": "2402091G",
+    "name": "Muhammad Iqmal Bin Rahman",
+    "year": "1",
+    "email": "2402091G@student.tp.edu.sg",
+    "phoneNumber": "92345678",
+    "courseID": "T62",
+    "class": "C24BO1",
+    "houseAddress": "\nUnit Number: #02-210, Street Address: 145 YISHUN RING ROAD SPRING GROVE SINGAPORE 760145",
+    "className": "C24BO1"
+  },
+  {
+    "matriculationNumber": "2402092G",
+    "name": "Priya D/O Rajendran",
+    "year": "3",
+    "email": "2402092G@student.tp.edu.sg",
+    "phoneNumber": "93456789",
+    "courseID": "T63",
+    "class": "C24BO3",
+    "houseAddress": "\nUnit Number: #10-452, Street Address: 679A WOODLANDS DRIVE 71 SINGAPORE 731679",
+    "className": "C24BO3"
+  },
+  {
+    "matriculationNumber": "2402093G",
+    "name": "Nicholas Lim Jun Kai",
+    "year": "2",
+    "email": "2402093G@student.tp.edu.sg",
+    "phoneNumber": "94567890",
+    "courseID": "T60",
+    "class": "C24BO2",
+    "houseAddress": "\nUnit Number: #09-321, Street Address: 478B TAMPINES STREET 45 SINGAPORE 522478",
+    "className": "C24BO2"
+  },
+  {
+    "matriculationNumber": "2402094G",
+    "name": "Chloe Ng Hui Min",
+    "year": "1",
+    "email": "2402094G@student.tp.edu.sg",
+    "phoneNumber": "95678901",
+    "courseID": "T30",
+    "class": "C24BO1",
+    "houseAddress": "\nUnit Number: #05-178, Street Address: 292B COMPASSVALE STREET SINGAPORE 542292",
+    "className": "C24BO1"
+  },
+  {
+    "matriculationNumber": "2402095G",
+    "name": "Ashwin S/O Manivannan",
+    "year": "3",
+    "email": "2402095G@student.tp.edu.sg",
+    "phoneNumber": "96789012",
+    "courseID": "T63",
+    "class": "C24BO3",
+    "houseAddress": "\nUnit Number: #03-134, Street Address: 501A WELLINGTON CIRCLE SINGAPORE 751501",
+    "className": "C24BO3"
+  },
+  {
+    "matriculationNumber": "2402096G",
+    "name": "Rachel Goh Li Ting",
+    "year": "2",
+    "email": "2402096G@student.tp.edu.sg",
+    "phoneNumber": "97890123",
+    "courseID": "T58",
+    "class": "C24BO2",
+    "houseAddress": "\nUnit Number: #07-224, Street Address: 218A BOON LAY AVENUE SINGAPORE 641218",
+    "className": "C24BO2"
+  }
+]

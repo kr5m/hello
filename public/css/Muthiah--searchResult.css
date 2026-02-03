@@ -1,0 +1,227 @@
+.searchResult {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+#popupdiv {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(2, 2, 2, 0.5);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+}
+
+.popupsmalldiv {
+    height: fit-content;
+    width: fit-content;
+    background-color: rgb(1, 1, 50);
+    color: white;
+    border-radius: 30px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-items: center;
+}
+
+.closeButton {
+    top: 10px;
+    right: 1px;
+    position: absolute;
+    font-size: 25px;
+    background: none;
+    color: white;
+    font-weight: bolder;
+}
+
+.popupform {
+    font-size: 15px;
+}
+
+.btn-secondary {
+    display: inline-block;
+    font-weight: 400;
+    background-color: #707277;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+}
+
+.btn-primary {
+    margin: 0;
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: inherit;
+    background-color: #007bff;
+    font-weight: bold;
+    display: inline-block;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+    justify-self: right;
+}
+
+#popupmodal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#popcontent {
+    margin-top: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    justify-self: center;
+    align-self: center;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+    font-size: larger;
+    font-weight: normal;
+}
+
+
+.popupsmalldiv {
+    background-color: #1f1f50;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 30px 40px;
+    width: 500px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.closeButton {
+    top: 0px;
+    right: 1px;
+    position: absolute;
+    font-size: 25px;
+    background: none;
+    color: white;
+    font-weight: bolder;
+}
+
+.popupsmalldiv h2 {
+    margin: 0;
+    text-align: center;
+    font-size: 22px;
+    text-decoration: underline;
+    color: #ffffff;
+}
+
+.popupform {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.popupsmalldiv form p {
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.popupsmalldiv form input,
+.popupsmalldiv form select {
+    margin-left: 10px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    flex: 1;
+    max-width: 70%;
+}
+
+#newaddress {
+    background-color: #12123b;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+#newaddress input {
+    width: calc(100% - 10px);
+}
+
+/* Buttons inside popup */
+.popupsmalldiv button {
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.popupsmalldiv button:hover {
+    opacity: 0.9;
+}
+
+.popupsmalldiv button[type="button"] {
+    background-color: #ff4b5c; 
+    color: white;
+    margin-top: 10px;
+}
+
+.popupsmalldiv button[type="submit"],
+.popupsmalldiv button[onclick*="updateStudent"] {
+    background-color: #4360be;
+    color: white;
+    margin-top: 20px;
+    padding: 10px 25px;
+    font-size: 16px;
+}
+
+
+.popupsmalldiv form center {
+    display: flex;
+    justify-content: center;
+}

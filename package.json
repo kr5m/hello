@@ -1,0 +1,32 @@
+{
+  "name": "devops-project-part1a",
+  "version": "1.0.0",
+  "description": "Muthiah S/O Nachiappan    Chen Bing Hong    Goh IK Xuan Lance",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest --coverage",
+    "test:coverage": "jest --verbose --coverage",
+    "test:frontend": "npx playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.1",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "file-system": "^2.2.2",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "selenium-webdriver": "^4.39.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muthiah-lab/DEVOPS-Project-Part1a.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Muthiah-lab/DEVOPS-Project-Part1a/issues"
+  },
+  "homepage": "https://github.com/Muthiah-lab/DEVOPS-Project-Part1a#readme"
+}

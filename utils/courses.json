@@ -1,0 +1,32 @@
+[
+  {
+    "courseId": "T63",
+    "courseName": "Diploma in Common ICT",
+    "courseDesc": "With strong IT fundamentals, this will help you to build a solid foundation in IT",
+    "school": "School of Informatics & IT"
+  },
+  {
+    "courseId": "T69",
+    "courseName": "Applied Artificial Intelligence",
+    "courseDesc": "Learn the fundamentals of AI and its applications in various fields",
+    "school": "School of Informatics & IT"
+  },
+  {
+    "courseId": "T60",
+    "courseName": "Big Data & Analytics",
+    "courseDesc": "Gain skills in big data technologies and data analytics to make informed decisions",
+    "school": "School of Informatics & IT"
+  },
+  {
+    "courseId": "T62",
+    "courseName": "Cybersecurity & Digital Forensics",
+    "courseDesc": "Protect digital assets and investigate cyber-crimes with this specialized course",
+    "school": "School of Informatics & IT"
+  },
+  {
+    "courseId": "T30",
+    "courseName": "Information Technology",
+    "courseDesc": "Develop programming & software development skills with hands-on experience from experts",
+    "school": "School of Informatics & IT"
+  }
+]
