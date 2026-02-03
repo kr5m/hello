@@ -9,6 +9,9 @@
     "test:coverage": "jest --verbose --coverage",
     "test:frontend": "npx playwright test"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "body-parser": "^2.2.1",
     "cors": "^2.8.5",
@@ -18,13 +21,12 @@
     "path": "^0.12.7",
     "selenium-webdriver": "^4.39.0"
   },
-  "devDependencies": {
-    "jest": "^29.7.0",
-    "supertest": "^6.3.3",
-    "@playwright/test": "^1.40.0"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Muthiah-lab/DEVOPS-Project-Part1a.git"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/Muthiah-lab/DEVOPS-Project-Part1a/issues"
+  },
+  "homepage": "https://github.com/Muthiah-lab/DEVOPS-Project-Part1a#readme"
 }
