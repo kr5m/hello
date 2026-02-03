@@ -73,8 +73,10 @@ app.delete('/delete-course', deleteCourse)
 
 // index.js
 const server = app.listen(PORT, function () {
-    const address = server.address(); // 'server' must be assigned before this runs
-    const baseUrl = `http://localhost:${address.port}`;
+    const address = server.address();
+    // Use a fallback if address is null to prevent the crash
+    const port = address ? address.port : PORT;
+    const baseUrl = `http://localhost:${port}`;
     console.log(`Project URL: ${baseUrl}`);
 });
 
