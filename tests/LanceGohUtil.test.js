@@ -100,72 +100,59 @@ describe('Lance Goh - Student Management API - Full Coverage Suite', () => {
         expect(res.statusCode).toBe(201);
     });
 
-    //
+    // TEST 6: Unexpected Server Error
     test('POST /add-student - Should return 500 for unexpected server errors', async () => {
-        // Force an error by mocking JSON.parse to throw an exception
         jest.spyOn(JSON, 'parse').mockImplementation(() => {
             throw new Error("Simulated Server Error");
         });
 
-        const res = await request(app)
-            .post('/add-student')
-            .send({
-                name: "Error User",             // Required
-                matriculationNumber: "2400000E", // Required
-                courseID: "T63",                // Required
-                email: "error@tp.edu.sg",       // Required
-                year: 1,                        // Required (1-3)
-                phoneNumber: "87654321",        // Completing the object
-                className: "C24BO1",            // Completing the object
-                houseAddress: "456 Jurong West" // Completing the object
-            });
-
-        // TEST 7: Recovery Failure - Template File Missing or Corrupt
-        // This targets the nested 'throw err' inside the ENOENT catch block
-        test('POST /add-student - Should return 500 if both resource and template files are missing', async () => {
-            // First readFile (Resource) fails with ENOENT
-            const readFileSpy = jest.spyOn(fs, 'readFile');
-            readFileSpy.mockRejectedValueOnce({ code: 'ENOENT' });
-
-            // Second readFile (Template) fails with a different error (e.g., Permission Denied)
-            readFileSpy.mockRejectedValueOnce(new Error("Template Access Denied"));
-
-            const res = await request(app).post('/add-student').send({
-                name: "Fail User",
-                matriculationNumber: "240000F",
-                courseID: "T63",
-                email: "f@tp.edu.sg",
-                year: 1,
-                phoneNumber: "91234567",
-                className: "C24BO1"
-            });
-
-            expect(res.statusCode).toBe(500);
-            expect(res.body.message).toBe("Template Access Denied");
-        });
-
-        // TEST 8: JSON Parsing Failure of Template File
-        test('POST /add-student - Should return 500 if template file contains invalid JSON', async () => {
-            const readFileSpy = jest.spyOn(fs, 'readFile');
-            // Resource file is missing
-            readFileSpy.mockRejectedValueOnce({ code: 'ENOENT' });
-            // Template file is found but contains corrupted data
-            readFileSpy.mockResolvedValueOnce("invalid-json-content");
-
-            const res = await request(app).post('/add-student').send({
-                name: "Corrupt User",
-                matriculationNumber: "240000C",
-                courseID: "T63",
-                email: "c@tp.edu.sg",
-                year: 1,
-                phoneNumber: "91234567",
-                className: "C24BO1"
-            });
-
-            expect(res.statusCode).toBe(500);
+        const res = await request(app).post('/add-student').send({
+            name: "Error User",
+            matriculationNumber: "2400000E",
+            courseID: "T63",
+            email: "error@tp.edu.sg",
+            year: 1,
+            phoneNumber: "87654321",
+            className: "C24BO1",
+            houseAddress: "456 Jurong West"
         });
 
         expect(res.statusCode).toBe(500);
         expect(res.body.message).toBe("Simulated Server Error");
+    });
+
+    // TEST 7: Recovery Failure - Template File Missing
+    test('POST /add-student - Should return 500 if both resource and template files are missing', async () => {
+        const readFileSpy = jest.spyOn(fs, 'readFile');
+        readFileSpy.mockRejectedValueOnce({ code: 'ENOENT' }); // Resource fails
+        readFileSpy.mockRejectedValueOnce(new Error("Template Access Denied")); // Template fails
+
+        const res = await request(app).post('/add-student').send({
+            name: "Fail User",
+            matriculationNumber: "240000F",
+            courseID: "T63",
+            email: "f@tp.edu.sg",
+            year: 1
+        });
+
+        expect(res.statusCode).toBe(500);
+        expect(res.body.message).toBe("Template Access Denied");
+    });
+
+    // TEST 8: JSON Parsing Failure of Template
+    test('POST /add-student - Should return 500 if template file contains invalid JSON', async () => {
+        const readFileSpy = jest.spyOn(fs, 'readFile');
+        readFileSpy.mockRejectedValueOnce({ code: 'ENOENT' }); // Resource missing
+        readFileSpy.mockResolvedValueOnce("invalid-json-content"); // Template corrupt
+
+        const res = await request(app).post('/add-student').send({
+            name: "Corrupt User",
+            matriculationNumber: "240000C",
+            courseID: "T63",
+            email: "c@tp.edu.sg",
+            year: 1
+        });
+
+        expect(res.statusCode).toBe(500);
     });
 });
