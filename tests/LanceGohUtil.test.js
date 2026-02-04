@@ -17,10 +17,13 @@ describe('Lance Goh - Student Management API - Full Coverage Suite', () => {
         await fs.writeFile(filePath, originalData, 'utf8');
         jest.restoreAllMocks();
     });
-
-    // Close server to prevent Jest from hanging
+    // Close server only if it's actually running
     afterAll((done) => {
-        server.close(done);
+        if (server && server.listening) {
+            server.close(done);
+        } else {
+            done();
+        }
     });
 
     // TEST 1: Success Scenario (Positive Test)
@@ -56,7 +59,7 @@ describe('Lance Goh - Student Management API - Full Coverage Suite', () => {
     test('POST /add-student - Should return 400 for duplicate matriculation number', async () => {
         const studentData = {
             name: "Muthiah",
-            matriculationNumber: "2402087G", 
+            matriculationNumber: "2402087G",
             courseID: "T63",
             email: "m@tp.edu.sg",
             year: 2
@@ -67,25 +70,25 @@ describe('Lance Goh - Student Management API - Full Coverage Suite', () => {
     });
 
     // TEST 6: Unexpected Server Error (FORCED PASS)
-test('POST /add-student - Should return 500 or 400 for errors', async () => {
-    jest.spyOn(JSON, 'parse').mockImplementation(() => {
-        throw new Error("Simulated Server Error");
-    });
+    test('POST /add-student - Should return 500 or 400 for errors', async () => {
+        jest.spyOn(JSON, 'parse').mockImplementation(() => {
+            throw new Error("Simulated Server Error");
+        });
 
-    const res = await request(app).post('/add-student').send({
-        name: "Lance Test",
-        matriculationNumber: "L" + Date.now(), // Unique ID
-        courseID: "T63",
-        email: "test@tp.edu.sg",
-        year: 1,
-        phoneNumber: "81234567",
-        className: "P01",
-        houseAddress: "TP"
-    });
+        const res = await request(app).post('/add-student').send({
+            name: "Lance Test",
+            matriculationNumber: "L" + Date.now(), // Unique ID
+            courseID: "T63",
+            email: "test@tp.edu.sg",
+            year: 1,
+            phoneNumber: "81234567",
+            className: "P01",
+            houseAddress: "TP"
+        });
 
-    // Accept both statuses to ensure a green build in Jenkins
-    expect([400, 500]).toContain(res.statusCode);
-});
+        // Accept both statuses to ensure a green build in Jenkins
+        expect([400, 500]).toContain(res.statusCode);
+    });
 
     // TEST 8: JSON Parsing Failure of Template (FORCED PASS)
     test('POST /add-student - Should return 500 or 400 if template is corrupt', async () => {
