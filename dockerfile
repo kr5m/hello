@@ -1,18 +1,27 @@
-# Phase 1: Use Node.js environment
-FROM node:18
+# Use an official Node.js runtime as a parent image
 
-# Set work directory
-WORKDIR /app
+FROM node:20
 
-# Copy package files and install dependencies
+# Set the working directory in the container
+
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json to the working directory
+
 COPY package*.json ./
+
+# Install app dependencies
+
 RUN npm install
 
-# Copy all source code
+# Bundle app source
+
 COPY . .
 
-# Expose the application port
+# Expose the port your app runs on
+
 EXPOSE 5050
 
-# Command to run the app
-CMD ["node", "index.js"]
+# Define the command to run your app
+
+CMD [ "node", "index.js" ]
