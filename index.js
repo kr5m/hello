@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // allows parsing of nested 
 app.use(bodyParser.json()); // extracts data from JSON Payload
 
 // To allow express to access the public folder
+// Using path.join ensures compatibility with Jenkins/Windows paths
 app.use(express.static(path.join(__dirname, "public")));
 
 /*istanbul ignore next*/
@@ -35,20 +36,20 @@ app.get('/courses', (req, res) => {
 });
 
 
-// ---------- Importing of Student backend files from utils folder ----------
+// ---------- Importing Student backend files ----------
 const { addStudent } = require('./utils/LanceGohUtil.js'); 
 const { getStudent } = require('./utils/Muthiah--GetStudentUtil.js'); 
 const { updatestudent } = require('./utils/MuthiahUtil.js'); 
 const { deleteStudent } = require('./utils/deleteStudentUtil.js');
 
-// ---------- Creating API Calls for Student CRUD Operations ----------
+// ---------- Student CRUD API Routes ----------
 app.post('/add-student', addStudent);
 app.post('/get-student', getStudent);
 app.put('/updatestudent', updatestudent);
 app.delete('/delete-student', deleteStudent);
 
 
-// ---------- COURSE ROUTES ----------
+// ---------- Course Routes ----------
 const { getCourses } = require("./utils/viewCourseUtil.js"); 
 const { addCourse } = require("./utils/BingHongUtil.js");
 const { updateCourse } = require('./utils/updateCourseUtil.js');
@@ -63,11 +64,11 @@ app.delete('/delete-course', deleteCourse);
 // ---------- Server Listener ----------
 const server = app.listen(PORT, function () {
     const address = server.address();
-    // Use a fallback if address is null to prevent the Jenkins crash
+    // Use a fallback if address is null to prevent the TypeError in Jenkins logs
     const port = address ? address.port : PORT;
     const baseUrl = `http://localhost:${port}`;
     console.log(`Project URL: ${baseUrl}`);
 });
 
-// IMPORTANT: Ensure you export both for your tests to work
+// IMPORTANT: Ensure you export both for your tests (Supertest) to work
 module.exports = { app, server };
