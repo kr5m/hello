@@ -12,8 +12,6 @@ module.exports = {
         'index.js',
         'models/student.js',
         'utils/LanceGohUtil.js',
-        'tests-e2e/frontend.test.js',
-        'public/js/lance-goh.js'
     ],
     // Directory where coverage reports will be saved
     coverageDirectory: 'coverage/backend',

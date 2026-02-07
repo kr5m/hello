@@ -15,6 +15,6 @@ spec:
       containers:
       - name: devops-pt3
         image: devops-pt3
-        imagePullPolicy: Never 
+        imagePullPolicy: Never
         ports:
         - containerPort: 5050
