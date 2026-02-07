@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-pt3-deploy
+spec:
+  replicas: 2 
+  selector:
+    matchLabels:
+      app: devops-pt3
+  template:
+    metadata:
+      labels:
+        app: devops-pt3
+    spec:
+      containers:
+      - name: devops-pt3
+        image: devops-pt3
+        imagePullPolicy: Never 
+        ports:
+        - containerPort: 5050
