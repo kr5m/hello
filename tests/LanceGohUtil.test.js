@@ -21,7 +21,10 @@ describe('Lance Goh - Student Management API - Full Coverage Suite', () => {
     afterAll((done) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         
+=======
+>>>>>>> parent of 1a22705 (z)
 =======
 >>>>>>> parent of 1a22705 (z)
 =======
