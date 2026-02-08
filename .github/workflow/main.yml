@@ -43,4 +43,4 @@ jobs:
 
       # 7. Build Docker Image
       - name: Build Docker Image
-        run: docker build -t ming10912/devops_pt3:latest .
+        run: docker build -t devops_pt3 .
