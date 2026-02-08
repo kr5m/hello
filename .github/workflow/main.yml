@@ -1,33 +1,46 @@
-name: CI/CD Pipeline
+name: CI/CD Pipeline - Build, Test, Scan, & Deploy
 
 on:
   push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
-  test:
+  build-secure-publish:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
+    steps:
+      # 1. Checkout the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. Setup Node.js Environment
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "npm" # Speeds up subsequent runs
+          node-version: '20' # Consistent with your environment
+          cache: 'npm'
 
+      # 3. Install Project Dependencies
       - name: Install Dependencies
         run: npm install
 
-      - name: Run Unit Tests (Jest)
-        # Add --forceExit to prevent the CI from hanging
-        run: npm test -- --forceExit
+      # 4. Install Playwright Browsers (for Frontend Testing)
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
 
-      - name: Run E2E Tests (Playwright)
+      # 5. Run Frontend Tests
+      - name: Run Frontend Tests
         run: |
-          npx playwright install --with-deps
-          npm start & 
+          npm start & # Starts your server in the background
           npx wait-on http://localhost:5050 --timeout 60000 
-          npm run test:frontend
+          npm run test-frontend
+
+      # 6. Run Backend Tests
+      - name: Run Backend Tests
+        # Added flags to resolve the "Jest did not exit" error
+        run: npm test -- --detectOpenHandles --forceExit
+
+      # 7. Build Docker Image
+      - name: Build Docker Image
+        run: docker build -t ming10912/devops_pt3:latest .
