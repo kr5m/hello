@@ -24,7 +24,7 @@ describe('Lance Goh - Student Management API - Full Coverage Suite', () => {
 
         await fs.writeFile(filePath, originalData, 'utf8');
 
-        -   await new Promise(resolve => setTimeout(resolve, 500));
+        await new Promise(resolve => setTimeout(resolve, 500));
     });
     // TEST 1: Success Scenario (Positive Test)
     test('POST /add-student - Should successfully add a new student', async () => {
