@@ -1,21 +1,27 @@
 language: node_js
 node_js:
-  - "20" # Matches your current project environment
+  - "20"
 
 services:
-  - docker # Required if you want to build your devops_pt3 image
+  - docker
 
 install:
   - npm install
-  - npx playwright install --with-deps
+  - npx playwright install-deps
+  - npx playwright install
+
+# This starts your server in the background so the tests can reach http://localhost:5050
+before_script:
+  - npm start &
+  - sleep 10
 
 script:
-  - npm test # Runs your 6 passing Jest tests
-  - npm run test:frontend # Runs your 9 Playwright tests
+  - npm test
+  - npm run test:frontend
 
 notifications:
   email:
     recipients:
-      - xlancegoh@gmail.com # Replaces your manual Jenkins email setup
+      - xlancegoh@gmail.com
     on_success: always
     on_failure: always
