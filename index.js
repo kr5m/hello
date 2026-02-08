@@ -5,6 +5,7 @@ const cors = require("cors");
 const path = require('path'); // Required for robust path joining
 const app = express(); // creates an express application
 const PORT = process.env.PORT || 5050;
+const logger = require('./logger');
 
 app.use(cors());
 
@@ -15,6 +16,10 @@ app.use(bodyParser.json()); // extracts data from JSON Payload
 // To allow express to access the public folder
 // Using path.join ensures compatibility with Jenkins/Windows paths
 app.use(express.static(path.join(__dirname, "public")));
+
+const statusMonitor = require('express-status-monitor');
+
+app.use(statusMonitor());
 
 /*istanbul ignore next*/
 // ---------- HOME PAGE ----------
@@ -37,9 +42,9 @@ app.get('/courses', (req, res) => {
 
 
 // ---------- Importing Student backend files ----------
-const { addStudent } = require('./utils/LanceGohUtil.js'); 
-const { getStudent } = require('./utils/Muthiah--GetStudentUtil.js'); 
-const { updatestudent } = require('./utils/MuthiahUtil.js'); 
+const { addStudent } = require('./utils/LanceGohUtil.js');
+const { getStudent } = require('./utils/Muthiah--GetStudentUtil.js');
+const { updatestudent } = require('./utils/MuthiahUtil.js');
 const { deleteStudent } = require('./utils/deleteStudentUtil.js');
 
 // ---------- Student CRUD API Routes ----------
@@ -50,7 +55,7 @@ app.delete('/delete-student', deleteStudent);
 
 
 // ---------- Course Routes ----------
-const { getCourses } = require("./utils/viewCourseUtil.js"); 
+const { getCourses } = require("./utils/viewCourseUtil.js");
 const { addCourse } = require("./utils/BingHongUtil.js");
 const { updateCourse } = require('./utils/updateCourseUtil.js');
 const { deleteCourse } = require('./utils/deleteCourseUtil.js');
@@ -67,7 +72,8 @@ const server = app.listen(PORT, function () {
     // Use a fallback if address is null to prevent the TypeError in Jenkins logs
     const port = address ? address.port : PORT;
     const baseUrl = `http://localhost:${port}`;
-    console.log(`Project URL: ${baseUrl}`);
+    console.log(`Project URL: ${baseUrl}`); logger.info(`Demo project at: ${baseUrl}!`);
+    logger.error(`Example of error log`)
 });
 
 // IMPORTANT: Ensure you export both for your tests (Supertest) to work
