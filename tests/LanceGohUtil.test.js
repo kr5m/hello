@@ -19,7 +19,6 @@ describe('Lance Goh - Student Management API - Full Coverage Suite', () => {
     });
     // Close server only if it's actually running
     afterAll((done) => {
-        
         if (server && server.listening) {
             server.close(done);
         } else {
