@@ -25,9 +25,7 @@ beforeAll((done) => {
 afterAll(async () => {
     // 2. Stop the server
     serverProcess.kill();
-    if (server && server.close) {
-        await server.close();
-    }
+
     // Quit driver if it exists
     if (driver) {
         await driver.quit();
@@ -46,6 +44,6 @@ test('Should auto-fill email when matriculation number is entered', async () => 
         .build();
 
     await driver.get('http://localhost:5050/manageStudent.html');
-
+    
     // ... the rest of your Selenium test ...
 }, 30000);
