@@ -18,7 +18,10 @@ describe('Lance Goh - Student Management API - Full Coverage Suite', () => {
         jest.restoreAllMocks();
     });
     // Close server only if it's actually running
-    afterAll((done) => {
+    afterAll(async (done) => {
+        if (server && server.close) {
+            await server.close();
+        } 
         if (server && server.listening) {
             server.close(done);
         } else {
