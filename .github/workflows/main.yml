@@ -1,0 +1,32 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js 20
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20' # Matches your project environment
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run Jest Unit Tests
+      run: npm test # Verifies your 6 passing tests
+
+    - name: Run Playwright E2E Tests
+      run: |
+        npx playwright install --with-deps
+        npm start & # Starts your server in the background
+        sleep 10    # Wait for the server to be ready
+        npm run test:frontend # Runs your 9 UI tests
