@@ -17,20 +17,15 @@ describe('Lance Goh - Student Management API - Full Coverage Suite', () => {
         await fs.writeFile(filePath, originalData, 'utf8');
         jest.restoreAllMocks();
     });
-    // Close server only if it's actually running
     afterAll(async () => {
-        // Forcefully close the server to release the port (e.g., 5050)
         if (server) {
             await new Promise((resolve) => server.close(resolve));
         }
 
-        // Restore file state as a safety measure
         await fs.writeFile(filePath, originalData, 'utf8');
 
-        // Give the event loop a millisecond to clear remaining handles
-        await new Promise(resolve => setTimeout(resolve, 500));
+        -   await new Promise(resolve => setTimeout(resolve, 500));
     });
-
     // TEST 1: Success Scenario (Positive Test)
     test('POST /add-student - Should successfully add a new student', async () => {
         const res = await request(app)
