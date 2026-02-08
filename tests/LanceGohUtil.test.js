@@ -20,7 +20,10 @@ describe('Lance Goh - Student Management API - Full Coverage Suite', () => {
     // Close server only if it's actually running
     afterAll((done) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
         
+=======
+>>>>>>> parent of 1a22705 (z)
 =======
 >>>>>>> parent of 1a22705 (z)
         if (server && server.listening) {
