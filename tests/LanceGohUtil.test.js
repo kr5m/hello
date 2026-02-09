@@ -18,20 +18,26 @@ describe('Lance Goh - Student Management API - Full Coverage Suite', () => {
         jest.restoreAllMocks();
     });
     afterAll(async () => {
-       // 1. Force the server listener to close 
-    if (server && server.close) {
-        await new Promise((resolve) => {
-            server.close(() => {
-                resolve();
+        // 1. Restore the JSON file immediately
+        await fs.writeFile(filePath, originalData, 'utf8');
+
+        // 2. Force the server to close and stop all persistent connections
+        if (server) {
+            await new Promise((resolve) => {
+                // This prevents new connections and waits for current ones to finish
+                server.close(() => {
+                    resolve();
+                });
             });
-        });
-    }
 
-    // 2. Restore the JSON file to its original state
-    await fs.writeFile(filePath, originalData, 'utf8');
+            // Safety: If the server object has an internal timer (Timeout), unref it
+            if (typeof server.unref === 'function') {
+                server.unref();
+            }
+        }
 
-    // 3. Small delay to allow Node's event loop to clear the 'Timeout' handle
-    await new Promise(resolve => setTimeout(resolve, 500));
+        // 3. Force a very small wait to allow the event loop to clear the Supertest timeout
+        await new Promise(resolve => setTimeout(resolve, 100));
     });
     // TEST 1: Success Scenario (Positive Test)
     test('POST /add-student - Should successfully add a new student', async () => {
