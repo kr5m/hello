@@ -18,7 +18,7 @@ describe('Lance Goh - Student Management API - Full Coverage Suite', () => {
         jest.restoreAllMocks();
     });
     afterAll(async () => {
-       // 1. Force the server listener to close properly
+       // 1. Force the server listener to close 
     if (server && server.close) {
         await new Promise((resolve) => {
             server.close(() => {
