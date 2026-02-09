@@ -22,11 +22,11 @@ jobs:
       run: npm install
 
     - name: Run Jest Unit Tests
-      run: npm test # Verifies your 6 passing tests
+      run: npm test -- --detectOpenHandles --forceExit
 
     - name: Run Playwright E2E Tests
       run: |
         npx playwright install --with-deps
         npm start & # Starts your server in the background
         sleep 10    # Wait for the server to be ready
-        npm run test
+        npm run test:frontend # Runs your 9 UI tests
