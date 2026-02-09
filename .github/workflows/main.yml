@@ -29,4 +29,4 @@ jobs:
         npx playwright install --with-deps
         npm start & # Starts your server in the background
         sleep 10    # Wait for the server to be ready
-        npm run test:frontend # Runs your 9 UI tests
+        npm run test
