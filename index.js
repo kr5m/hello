@@ -67,14 +67,21 @@ app.delete('/delete-course', deleteCourse);
 
 
 // ---------- Server Listener ----------
-const server = app.listen(PORT, function () {
-    const address = server.address();
-    // Use a fallback if address is null to prevent the TypeError in Jenkins logs
-    const port = address ? address.port : PORT;
-    const baseUrl = `http://localhost:${port}`;
-    console.log(`Project URL: ${baseUrl}`); logger.info(`Demo project at: ${baseUrl}!`);
-    logger.error(`Example of error log`)
-});
+let server;
+
+// This condition checks if the file is being run directly (node index.js)
+// or being imported by a test. It ONLY starts the server if NOT in a test.
+if (require.main === module) {
+    server = app.listen(PORT, function () {
+        const address = server.address();
+        // Use a fallback if address is null to prevent the TypeError in Jenkins logs
+        const port = address ? address.port : PORT;
+        const baseUrl = `http://localhost:${port}`;
+        console.log(`Project URL: ${baseUrl}`); 
+        logger.info(`Demo project at: ${baseUrl}!`);
+        logger.error(`Example of error log`);
+    });
+}
 
 // IMPORTANT: Ensure you export both for your tests (Supertest) to work
 module.exports = { app, server };
